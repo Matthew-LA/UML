@@ -1,0 +1,54 @@
+//
+//  daily4.c
+//  COMP1020
+//
+//  Created by Matthew Lorette Anaya on 4/22/20.
+//  Copyright © 2020 Matthew Lorette Anaya. All rights reserved.
+//
+/***********************************************************
+Author: Matthew Lorette Anaya
+Date: 02/06/2020
+Effort: 30mins
+Purpose: Familiarizing with bitwise operands
+***********************************************************/
+#include <stdio.h>
+
+void set_flag(int* flag_holder, int flag_position);
+int check_flag(int flag_holder, int flag_position);
+
+int main(int argc, char* argv[])
+{
+    
+ int flag_holder = 0;
+ int i;
+ 
+ set_flag(&flag_holder, 3);
+ set_flag(&flag_holder, 16);
+ set_flag(&flag_holder, 31);
+
+ for(i=31; i>=0; i--){
+    printf("%d", check_flag(flag_holder, i));
+    
+    if(i%4 == 0){
+    printf(" ");
+    }
+ }
+ printf("\n");
+ return 0;
+    
+}
+void set_flag(int* flag_holder, int flag_position)
+{
+    int mask =  1 << flag_position;
+    *flag_holder = *flag_holder | mask;
+}
+
+int check_flag(int flag_holder, int flag_position)
+{
+    int mask =  1 << flag_position;
+    int check = flag_holder & mask;
+    return (check !=0 ? 1 : 0);
+}
+
+
+
