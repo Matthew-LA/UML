@@ -1,0 +1,7 @@
+- Create the "DB3" database using the DB3.sql.
+- Copy the .php files XAMPP's htdocs folder (/XAMPP/htdocs).
+- Open DB3 in android studio.
+- If running on an emulator nothing should have to be changed.
+- If using something other than an emulator and the app wont connect to the
+  database then the URL string in strings.xml will have to be adjusted to your configuration.
+- Press play button and app should start.
