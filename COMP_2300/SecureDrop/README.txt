@@ -1,0 +1,14 @@
+
+############################# This is for milestone 1 and 2 ################################
+To start the SecureDrop application we run the Secure_drop.py file, which calls to a main function from the main.py file to start the application, and it is used to check if there are any users are registered or not. If there are no users registered then it will call user_registration() to proceed with the user registration.
+
+For user registration, we get the user input for the full name, email(which is also being validated for the correct email format), and a valid and strong password, which is also being validated. After that, we hash the password along with salt and save all the information to the users.json file.
+
+
+Now, for the login, we get the user input for the email and validate it if the email is in the correct format and also it is in the users.json file. After the email is validated, we get the password input and hash it with the salt and compare that hash to the saved hash we have in the users.json. If the login info provided is incorrect then we print the appropriate message.
+
+If the user is able to login successfully, then we call the start_cmd() method of app_shell.py from main.py, which displays the application intro message, and prints the supported commands by using the "help" command. The user is also able to exit the application by using the "exit" command.
+
+###############################################################################################
+#3-4 When the user registers it will create the user.json and contacts.json files. 
+When the contacts file is created it is then encrypted using the users password. If the user succesfully login, the shell is then passed the user's password. The shell then creates a user object using the password. It then creates an encryption key using said password and the user objects salt member(user.salt), which is used to decrypt and encrypt the contacts file. Finally it creates both the udp send and receive processes, starts the send and throws them into a queue along with the user object. This queue is used to access sharable memory in-order for the processes to update the user object. The list function pulls both the user object and receive process out of the queue. It then starts the receive process. This process is listening for anything on the specified port. It then pulls the message	which contains a hashed email, ip, and a public key. The receive process then determines whether the packet was sent from the  user that's logged in(which is ignored) and a contact that is already on the user.contact_ping_list(which is ignored). If it doesn't fall under either of these it is then appended to the contact_ping_list. The list method then generates the user.contact_on_list from the user.contact_ping_list and prints the contact_on_list.   

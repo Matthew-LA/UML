@@ -1,0 +1,10 @@
+{
+    "user": [
+        {
+            "email": "guy1@g.com",
+            "name": "guy1",
+            "password": "6c36TvF2DhvoQ",
+            "salt": "6cd5f7db5081d88d"
+        }
+    ]
+}
